@@ -36,9 +36,6 @@ public class CastListTest {
 		CreditsPage creditsPage = titlePage.openCredits();
 		
 		assertTrue(creditsPage.hasCasted(actorName));
-		
-//		driver.quit();
-		
 	}
 
 	
@@ -51,8 +48,8 @@ public class CastListTest {
 	
 	
 	void readParams() {
-		actorName = System.getenv("actorname");
-		movieTitle = System.getenv("movietitle");
+		actorName = System.getProperty("actorname");
+		movieTitle = System.getProperty("movietitle");
 	}
 	
 }
