@@ -3,6 +3,8 @@ package imdb;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.github.bonigarcia.wdm.ChromeDriverManager;
+
 public class BrowserSetup {
 
 	private static WebDriver driver;
@@ -10,7 +12,7 @@ public class BrowserSetup {
 
 	private static void setup() {
 		
-		System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe ");
+		ChromeDriverManager.getInstance().setup();
 		
 		driver = new ChromeDriver();
 		ready = true;
