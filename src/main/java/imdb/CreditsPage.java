@@ -1,6 +1,5 @@
 package imdb;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,8 +8,8 @@ import org.openqa.selenium.WebElement;
 
 public class CreditsPage extends Page {
 
-	By castList = By.xpath(".//table[@class='cast_list']//td[2]/a");
-	List<String> cast;
+	By cast = By.xpath(".//table[@class='cast_list']//td[2]/a");
+	By characters = By.xpath(".//table[@class='cast_list']//td[4]/a");
 	
 	
 	public CreditsPage(WebDriver driver) {
@@ -20,13 +19,13 @@ public class CreditsPage extends Page {
 	
 	boolean hasCasted(String name) {
 		
-		cast = new ArrayList<String>();
+		List<WebElement> castList = findAll(cast);
+		List<WebElement> charactersList = findAll(characters);
 		
-		for (WebElement a: findAll(castList)) {
-			cast.add(a.getText());
-			
-			if (a.getText().contains(name)) {
-				System.out.println(a.getText());
+		for (int i = 0; i < castList.size(); i++) {
+			if (castList.get(i).getText().contains(name)) {
+				System.out.print(castList.get(i).getText() + " as ");
+				System.out.println(charactersList.get(i).getText());
 				return true;
 			}
 		}
